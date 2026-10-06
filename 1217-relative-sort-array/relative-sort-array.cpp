@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
         int maxi=*max_element(arr1.begin(),arr1.end());
-        vector<int> freq(maxi+1);
+        map<int,int>freq;
         vector<int>ans;
         for(int i:arr1){
             freq[i]++;
@@ -13,13 +13,14 @@ public:
                 ans.push_back(elem);
                 freq[elem]--;
             }
+            freq.erase(elem);
         }
-        for(int i=0;i<freq.size();i++){
-            if(freq[i]>0){
-                while(freq[i]>0){
-                    ans.push_back(i);
-                    freq[i]--;
-                }
+        for(auto it:freq){
+            int key=it.first;
+            int val=it.second;
+            while(val>0){
+                ans.push_back(key);
+                val--;
             }
         }
         return ans;
