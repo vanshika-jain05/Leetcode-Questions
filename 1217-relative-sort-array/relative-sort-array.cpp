@@ -1,7 +1,6 @@
 class Solution {
 public:
     vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
-        int maxi=*max_element(arr1.begin(),arr1.end());
         map<int,int>freq;
         vector<int>ans;
         for(int i:arr1){
